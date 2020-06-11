@@ -54,6 +54,11 @@ namespace GroupDocs.Parser.Cloud.Sdk.Model
         public int? PageCount { get; set; }
 
         /// <summary>
+        /// Gets or sets the encoding.
+        /// </summary>  
+        public string Encoding { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +69,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Model
           sb.Append("  FileType: ").Append(this.FileType).Append("\n");
           sb.Append("  Size: ").Append(this.Size).Append("\n");
           sb.Append("  PageCount: ").Append(this.PageCount).Append("\n");
+          sb.Append("  Encoding: ").Append(this.Encoding).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

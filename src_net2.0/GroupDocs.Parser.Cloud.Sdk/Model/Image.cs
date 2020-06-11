@@ -49,6 +49,26 @@ namespace GroupDocs.Parser.Cloud.Sdk.Model
         public string DownloadUrl { get; set; }
 
         /// <summary>
+        /// Gets or sets the index of the page.
+        /// </summary>  
+        public int? PageIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rotation of the image in degrees.
+        /// </summary>  
+        public double? Rotation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image file format.
+        /// </summary>  
+        public string FileFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rectangle area of the image.
+        /// </summary>  
+        public Rectangle Rectangle { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -58,6 +78,10 @@ namespace GroupDocs.Parser.Cloud.Sdk.Model
           sb.Append("class Image {\n");
           sb.Append("  Path: ").Append(this.Path).Append("\n");
           sb.Append("  DownloadUrl: ").Append(this.DownloadUrl).Append("\n");
+          sb.Append("  PageIndex: ").Append(this.PageIndex).Append("\n");
+          sb.Append("  Rotation: ").Append(this.Rotation).Append("\n");
+          sb.Append("  FileFormat: ").Append(this.FileFormat).Append("\n");
+          sb.Append("  Rectangle: ").Append(this.Rectangle).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }
