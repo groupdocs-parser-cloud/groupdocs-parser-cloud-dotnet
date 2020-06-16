@@ -29,7 +29,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
         }
 
         [Test]
-        public async Task TestGetInfo_Docx()
+        public void TestGetInfo_Docx()
         {
             var testFile = TestFiles.FourPages;
             var options = new InfoOptions
@@ -46,7 +46,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
         }
 
         [Test]
-        public async Task TestGetInfo_ContainerItem()
+        public void TestGetInfo_ContainerItem()
         {
             var testFile = TestFiles.Zip;
             var options = new InfoOptions
