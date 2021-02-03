@@ -1,7 +1,9 @@
 ![](https://img.shields.io/badge/api-v1.0-lightgrey) ![Nuget](https://img.shields.io/nuget/v/GroupDocs.parser-Cloud) ![Nuget](https://img.shields.io/nuget/dt/GroupDocs.parser-Cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-parser-cloud/groupdocs-parser-cloud-dotnet)](https://github.com/groupdocs-parser-cloud/groupdocs-parser-cloud-dotnet/blob/master/LICENSE)
 
 # GroupDocs.Parser Cloud SDK for .NET
-This repository contains GroupDocs.Parser Cloud SDK for .NET source code. This SDK allows you to work with GroupDocs.Parser Cloud REST APIs in your .NET applications.
+GroupDocs.Parser Cloud SDK for .NET wraps GroupDocs.Parser RESTful APIs so you may integrate **Document Parser** features in your own apps with zero initial cost.
+
+GroupDocs.Parser Cloud API allows the developers to parse documents such as invoices, receipts or financial tables to extract text, images and metadata from 40+ popular document formats.
 
 ## Cloud Document Parser Features
 
@@ -76,38 +78,20 @@ The complete source code is available in this repository folder, you can either 
 ## Getting Started
 
 ```csharp
-using System;
-using System.Diagnostics;
-using GroupDocs.Parser.Cloud.Sdk.Api;
+// Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+string MyClientId = "";
+string MyClientSecret = "";
 
-namespace Example
+// Create instance of the API
+var configuration = new Configuration(MyClientId, MyClientSecret);
+var api = new InfoApi(configuration);
+
+// Get supported file formats
+var response = api.GetSupportedFileFormats();
+
+foreach (var format in response.Formats)
 {
-    public class Example
-    {
-        public void Main()
-        {
-            //TODO: Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
-            var appSid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-            var appKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-
-            var api = new InfoApi(appSid, appKey);
-
-            try
-            {
-                // Get supported file formats
-                var response = api.GetSupportedFileFormats();
-
-                foreach (var format in response.Formats)
-                {
-                    Debug.Print(format.ToString());
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Something went wrong: " + e.Message);
-            }
-        }
-    }
+	Debug.Print(format.ToString());
 }
 ```
 
