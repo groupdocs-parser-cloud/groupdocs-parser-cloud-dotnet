@@ -23,6 +23,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace GroupDocs.Parser.Cloud.Sdk.Client.RequestHandlers
 {
     using System;
@@ -86,13 +89,19 @@ namespace GroupDocs.Parser.Cloud.Sdk.Client.RequestHandlers
 
                     var apiErrorResponse = SerializationHelper
                         .Deserialize(responseData, typeof(ApiErrorResponse)) as ApiErrorResponse;
-                    if (apiErrorResponse != null)
+                    if (apiErrorResponse != null && apiErrorResponse.Error != null)
                     {
                         throw new ApiException(statusCode, apiErrorResponse.Error.Message);
                     }
-                }
 
-                throw new ApiException(statusCode, webResponse.StatusDescription);
+                    var errorResponse = JsonConvert.DeserializeObject<JObject>(responseData);
+                    var error = errorResponse["error"];
+                    var message = error == null
+                        ? responseData
+                        : error["message"] == null ? responseData : error["message"].Value<string>();
+
+                    throw new ApiException(statusCode, message);
+                }
             }
             finally
             {

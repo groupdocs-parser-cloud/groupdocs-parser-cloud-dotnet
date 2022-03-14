@@ -52,6 +52,9 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal
         public static readonly TestFile ImageAndAttachment = new TestFile("embedded-image-and-attachment.eml", "email\\eml\\");
         public static readonly TestFile Pdf = new TestFile("template-document.pdf", "pdf\\");
         public static readonly TestFile NotExist = new TestFile("folder\\file-not-exist.pdf", "");
+        public static readonly TestFile Tar = new TestFile("sample.tar", "containers\\archive\\");
+        public static readonly TestFile Rar = new TestFile("sample.rar", "containers\\archive\\");
+        public static readonly TestFile Md = new TestFile("sample.md", "words\\docx\\");
 
 
         public static IEnumerable<TestFile> TestFilesList
@@ -70,6 +73,9 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal
                 yield return ImageAndAttachment;
                 yield return Pdf;
                 yield return PdfContainer;
+                yield return Tar;
+                yield return Rar;
+                yield return Md;
             }
         }
     }

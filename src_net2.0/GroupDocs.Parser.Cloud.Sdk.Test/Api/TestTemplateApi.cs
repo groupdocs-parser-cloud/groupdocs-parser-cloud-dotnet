@@ -3,6 +3,7 @@ using GroupDocs.Parser.Cloud.Sdk.Model;
 using GroupDocs.Parser.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using System.Collections.Generic;
+using GroupDocs.Metadata.Cloud.Sdk.Test.Infrastructure;
 
 namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
 {
@@ -93,7 +94,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             var deleteRequest = new DeleteTemplateRequest(options);
 
             var ex = Assert.Throws<ApiException>(() => { TemplateApi.DeleteTemplate(deleteRequest); });
-            Assert.AreEqual("Can't find file located at 'notExistTemplate.json'.", ex.Message);
+            Assert.AreEqual("Can't find file located at 'notExistTemplate.json'.", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -106,7 +107,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
 
             var getRequest = new GetTemplateRequest(options);
             var ex = Assert.Throws<ApiException>(() => { TemplateApi.GetTemplate(getRequest); });
-            Assert.AreEqual("Can't find file located at 'notExistTemplate.json'.", ex.Message);
+            Assert.AreEqual("Can't find file located at 'notExistTemplate.json'.", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -116,7 +117,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             var request = new CreateTemplateRequest(options);
 
             var ex = Assert.Throws<ApiException>(() => { TemplateApi.CreateTemplate(request); });
-            Assert.AreEqual("Request parameters missing or have incorrect format", ex.Message);
+            Assert.AreEqual("Request parameters missing or have incorrect format", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -126,7 +127,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             var request = new GetTemplateRequest(options);
 
             var ex = Assert.Throws<ApiException>(() => { TemplateApi.GetTemplate(request); });
-            Assert.AreEqual("Request parameters missing or have incorrect format", ex.Message);
+            Assert.AreEqual("Request parameters missing or have incorrect format", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -136,7 +137,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             var request = new DeleteTemplateRequest(options);
 
             var ex = Assert.Throws<ApiException>(() => { TemplateApi.DeleteTemplate(request); });
-            Assert.AreEqual("Request parameters missing or have incorrect format", ex.Message);
+            Assert.AreEqual("Request parameters missing or have incorrect format", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         #region Setup

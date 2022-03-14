@@ -5,6 +5,7 @@ using GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
+using GroupDocs.Metadata.Cloud.Sdk.Test.Infrastructure;
 
 namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
 {
@@ -76,7 +77,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
 
             var request = new GetInfoRequest(options);
             var ex = Assert.Throws<ApiException>(() => { InfoApi.GetInfo(request); });
-            Assert.AreEqual($"Can't find file located at '{testFile.FullName}'.", ex.Message);
+            Assert.AreEqual($"Can't find file located at '{testFile.FullName}'.", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -90,7 +91,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
 
             var request = new GetInfoRequest(options);
             var ex = Assert.Throws<ApiException>(() => { InfoApi.GetInfo(request); });
-            Assert.AreEqual($"Password provided for file '{testFile.FullName}' is incorrect.", ex.Message);
+            Assert.AreEqual($"Password provided for file '{testFile.FullName}' is incorrect.", JsonUtils.GetErrorMessage(ex.Message));
         }
     }
 }

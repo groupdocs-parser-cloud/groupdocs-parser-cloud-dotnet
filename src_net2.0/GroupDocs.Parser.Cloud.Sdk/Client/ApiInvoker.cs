@@ -226,17 +226,8 @@ namespace GroupDocs.Parser.Cloud.Sdk.Client
             byte[] formData = null;
             if (formParams.Count > 0)
             {
-                if (formParams.Count > 1)
-                {
-                    string formDataBoundary = "GroupDocsParserForCloud_NETSDKFormBoundary";
-                    client.ContentType = "multipart/form-data; boundary=" + formDataBoundary;
-                    formData = GetMultipartFormData(formParams, formDataBoundary);
-                }
-                else
-                {
-                    client.ContentType = "multipart/form-data";
-                    formData = GetMultipartFormData(formParams, string.Empty);
-                }
+                string formDataBoundary = "GroupDocsMetadataForCloud_NETSDKFormBoundary";
+                formData = GetMultipartFormData(formParams, formDataBoundary);
 
                 client.ContentLength = formData.Length;
             }

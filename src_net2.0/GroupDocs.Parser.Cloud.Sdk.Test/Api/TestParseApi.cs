@@ -5,6 +5,7 @@ using GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using GroupDocs.Metadata.Cloud.Sdk.Test.Infrastructure;
 
 namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
 {
@@ -101,7 +102,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             };
             var request = new ParseRequest(options);
             var ex = Assert.Throws<ApiException>(() => { ParseApi.Parse(request); });
-            Assert.AreEqual($"Can't find file located at '{testFile.FullName}'.", ex.Message);
+            Assert.AreEqual($"Can't find file located at '{testFile.FullName}'.", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -114,7 +115,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             };
             var request = new ParseRequest(options);
             var ex = Assert.Throws<ApiException>(() => { ParseApi.Parse(request); });
-            Assert.AreEqual("Request parameters missing or have incorrect format", ex.Message);
+            Assert.AreEqual("Request parameters missing or have incorrect format", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -129,7 +130,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             };
             var request = new ParseRequest(options);
             var ex = Assert.Throws<ApiException>(() => { ParseApi.Parse(request); });
-            Assert.AreEqual($"The specified file '{testFile.FullName}' has type which is not currently supported.", ex.Message);
+            Assert.AreEqual($"The specified file '{testFile.FullName}' has type which is not currently supported.", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         [Test]
@@ -145,7 +146,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             options.FileInfo.Password = "123";
             var request = new ParseRequest(options);
             var ex = Assert.Throws<ApiException>(() => { ParseApi.Parse(request); });
-            Assert.AreEqual($"Password provided for file '{testFile.FullName}' is incorrect.", ex.Message);
+            Assert.AreEqual($"Password provided for file '{testFile.FullName}' is incorrect.", JsonUtils.GetErrorMessage(ex.Message));
         }
 
         #region Setup
