@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net20</TargetFrameworks>
+    <AssemblyVersion>25.7.0.0</AssemblyVersion>
+    <FileVersion>25.7.0.0</FileVersion>
+    <Version>25.7.0</Version>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <Company>GroupDocs</Company>
+    <Authors>GroupDocs Product Team</Authors>
+    <Copyright>Aspose Pty Ltd.</Copyright>
+    <Description>Document Viewing REST APIs for Any Platform. Boost your document viewing process to view over 50 document and image formats in any application, using our native document parser APIs for cloud.</Description>
+    <PackageLicenseUrl>https://github.com/groupdocs-parser-cloud/groupdocs-parser-cloud-dotnet/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://products.groupdocs.cloud/parser/family</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/groupdocs-parser-cloud/groupdocs-parser-cloud-dotnet</RepositoryUrl>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net20'">
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.TraceSource" Version="4.3.0" />
+  </ItemGroup>
+</Project>
