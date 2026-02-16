@@ -31,32 +31,33 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal
     {
         public static readonly string DefaultPassword = "password";
 
-        public static readonly TestFile PasswordProtected = new TestFile("password-protected.docx", "words\\docx\\")
+        public static readonly TestFile PasswordProtected = new TestFile("password-protected.docx", "words/docx/")
         {
             Password = DefaultPassword
         };
 
-        public static readonly TestFile PdfContainer = new TestFile("PDF with attachements.pdf", "pdf\\")
+        public static readonly TestFile PdfContainer = new TestFile("PDF with attachements.pdf", "pdf/")
         {
             Password = DefaultPassword
         };
 
-        public static readonly TestFile FourPages = new TestFile("four-pages.docx", "words\\docx\\");
-        public static readonly TestFile OnePage = new TestFile("one-page.docx", "words\\docx\\");
-        public static readonly TestFile TemplateDocumentDocx = new TestFile("template-document.docx", "words\\docx\\");
-        public static readonly TestFile FormattedDocument = new TestFile("formatted-document.docx", "words\\docx\\");
-        public static readonly TestFile EncodingDetection = new TestFile("encoding-detection.txt", "words\\txt\\");
-        public static readonly TestFile Zip = new TestFile("docx.zip", "containers\\archive\\");
-        public static readonly TestFile ZipWithEmailImagePdf = new TestFile("zip-eml-jpg-pdf.zip", "containers\\archive\\");
-        public static readonly TestFile JpegFile = new TestFile("document.jpeg", "image\\jpeg\\");
-        public static readonly TestFile ImageAndAttachment = new TestFile("embedded-image-and-attachment.eml", "email\\eml\\");
-        public static readonly TestFile Pdf = new TestFile("template-document.pdf", "pdf\\");
-        public static readonly TestFile NotExist = new TestFile("folder\\file-not-exist.pdf", "");
-        public static readonly TestFile Tar = new TestFile("sample.tar", "containers\\archive\\");
-        public static readonly TestFile Rar = new TestFile("sample.rar", "containers\\archive\\");
-        public static readonly TestFile Md = new TestFile("sample.md", "words\\docx\\");
-        public static readonly TestFile Video = new TestFile("sample.avi", "video\\avi\\");
-        public static readonly TestFile Barcodes = new TestFile("barcodes.docx", "words\\docx\\");
+        public static readonly TestFile FourPages = new TestFile("four-pages.docx", "words/docx/");
+        public static readonly TestFile OnePage = new TestFile("one-page.docx", "words/docx/");
+        public static readonly TestFile TemplateDocumentDocx = new TestFile("template-document.docx", "words/docx/");
+        public static readonly TestFile FormattedDocument = new TestFile("formatted-document.docx", "words/docx/");
+        public static readonly TestFile EncodingDetection = new TestFile("encoding-detection.txt", "words/txt/");
+        public static readonly TestFile Zip = new TestFile("docx.zip", "containers/archive/");
+        public static readonly TestFile ZipWithEmailImagePdf = new TestFile("zip-eml-jpg-pdf.zip", "containers/archive/");
+        public static readonly TestFile JpegFile = new TestFile("document.jpeg", "image/jpeg/");
+        public static readonly TestFile ImageAndAttachment = new TestFile("embedded-image-and-attachment.eml", "email/eml/");
+        public static readonly TestFile Pdf = new TestFile("template-document.pdf", "pdf/");
+        public static readonly TestFile NotExist = new TestFile("folder/file-not-exist.pdf", "");
+        public static readonly TestFile Tar = new TestFile("sample.tar", "containers/archive/");
+        public static readonly TestFile Rar = new TestFile("sample.rar", "containers/archive/");
+        public static readonly TestFile Md = new TestFile("sample.md", "words/docx/");
+        public static readonly TestFile Video = new TestFile("sample.avi", "video/avi/");
+        public static readonly TestFile Barcodes = new TestFile("barcodes.docx", "words/docx/");
+        public static readonly TestFile Invoice = new TestFile("Invoice.xlsx", "cells/");
 
         public static IEnumerable<TestFile> TestFilesList
         {
@@ -77,6 +78,7 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal
                 yield return Tar;
                 yield return Rar;
                 yield return Md;
+                yield return Invoice;
             }
         }
     }

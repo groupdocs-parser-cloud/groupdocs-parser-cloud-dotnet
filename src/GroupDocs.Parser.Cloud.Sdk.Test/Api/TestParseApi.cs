@@ -2,6 +2,7 @@
 using GroupDocs.Parser.Cloud.Sdk.Model;
 using GroupDocs.Parser.Cloud.Sdk.Model.Requests;
 using GroupDocs.Parser.Cloud.Sdk.Test.Api.Internal;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,6 +111,28 @@ namespace GroupDocs.Parser.Cloud.Sdk.Test.Api
             options.FileInfo.Password = "123";
             var request = new ParseRequest(options);
             Assert.Throws<ApiException>(() => { ParseApi.Parse(request); });
+        }
+
+        [Test]
+        public void TestAIParse()
+        {
+            var testFile = TestFiles.Invoice;
+            var options = new AIParseOptions
+            {
+                FileInfo = testFile.ToFileInfo(),
+                Template = new
+                {
+                    InvoiceNum = "",
+                    Date = "",
+                    Email = ""
+                }
+            };
+            var request = new AIParseRequest(options);
+            var result = ParseApi.AIParse(request);
+
+            Assert.IsNotNull(result);
+            var invoiceNum = ((JObject)result)["InvoiceNum"];
+            Assert.IsNotNull(invoiceNum);
         }
 
         #region Setup

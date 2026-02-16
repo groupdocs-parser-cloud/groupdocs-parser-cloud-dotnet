@@ -25,6 +25,7 @@
 
 namespace GroupDocs.Parser.Cloud.Sdk.Api
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using GroupDocs.Parser.Cloud.Sdk.Client;
@@ -64,6 +65,41 @@ namespace GroupDocs.Parser.Cloud.Sdk.Api
             requestHandlers.Add(new ApiExceptionRequestHandler());
             this.apiInvoker = new ApiInvoker(requestHandlers, this.configuration.Timeout);
         }                            
+
+        /// <summary>
+        /// Extract document data using AI and given template. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="AIParseRequest" /></param>
+        /// <returns><see cref="Object"/></returns>
+        public Object AIParse(AIParseRequest request)
+        {
+            // verify the required parameter 'options' is set
+            if (request.options == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'options' when calling AIParse");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetServerUrl() + "/parser/aiparse";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var postBody = SerializationHelper.Serialize(request.options); // http body (model) parameter
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                postBody, 
+                null, 
+                null);
+
+            if (response != null)
+            {
+                return (Object)SerializationHelper.Deserialize(response, typeof(Object));
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Extract barcodes from document. 
@@ -204,6 +240,62 @@ namespace GroupDocs.Parser.Cloud.Sdk.Api
 
             return null;
         }
+    }
+}
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose Pty Ltd" file="AIParseRequest.cs">
+//  Copyright (c) Aspose Pty Ltd
+// </copyright>
+// <summary>
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+// 
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+// 
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace GroupDocs.Parser.Cloud.Sdk.Model.Requests 
+{
+    using GroupDocs.Parser.Cloud.Sdk.Model; 
+
+    /// <summary>
+    /// Request model for <see cref="GroupDocs.Parser.Cloud.Sdk.Api.ParseApi.AIParse" /> operation.
+    /// </summary>  
+    public class AIParseRequest  
+    {
+          /// <summary>
+          /// Initializes a new instance of the <see cref="AIParseRequest"/> class.
+          /// </summary>        
+          public AIParseRequest()
+          {
+          }
+
+          /// <summary>
+          /// Initializes a new instance of the <see cref="AIParseRequest"/> class.
+          /// </summary>
+          /// <param name="options">Parse options.</param>
+          public AIParseRequest(AIParseOptions options)             
+          {
+              this.options = options;
+          }
+          
+          /// <summary>
+          /// Parse options.
+          /// </summary>  
+          public AIParseOptions options { get; set; }
     }
 }
 // --------------------------------------------------------------------------------------------------------------------

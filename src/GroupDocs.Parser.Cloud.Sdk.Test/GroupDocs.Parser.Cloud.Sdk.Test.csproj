@@ -74,6 +74,9 @@
     <None Update="Resources\TestData\words\txt\encoding-detection.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\TestData\cells\Invoice.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>  
 
 </Project>

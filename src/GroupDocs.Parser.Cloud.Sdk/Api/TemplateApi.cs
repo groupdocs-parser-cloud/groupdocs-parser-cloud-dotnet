@@ -25,6 +25,7 @@
 
 namespace GroupDocs.Parser.Cloud.Sdk.Api
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using GroupDocs.Parser.Cloud.Sdk.Client;
